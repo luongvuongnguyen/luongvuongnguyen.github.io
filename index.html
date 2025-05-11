@@ -152,6 +152,9 @@
                         <!-- Tab panes -->
                     <div class="tab-content">
                         <div class="tab-pane container active" id="published">
+                            <nav aria-label="Page navigation" class="mt-4">
+                              <ul class="pagination justify-content-center" id="publishedPagination"></ul>
+                            </nav>
 
                         <div class="timeline-card timeline-card-success card shadow-sm">
                                     <div class="card-header">                   
@@ -1043,6 +1046,69 @@
 		</div>		
 	</div>
 </div>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const cards = document.querySelectorAll('#published .timeline-card');
+  const perPage = 5;
+  const totalPages = Math.ceil(cards.length / perPage);
+  const paginationContainer = document.getElementById("publishedPagination");
+
+  function showPage(page) {
+    cards.forEach((card, index) => {
+      card.style.display = (index >= (page - 1) * perPage && index < page * perPage) ? 'block' : 'none';
+    });
+
+    // update active class on pagination
+    const pageLinks = document.querySelectorAll("#publishedPagination li.page-item");
+    pageLinks.forEach((li, idx) => {
+      li.classList.toggle('active', idx === page);
+    });
+  }
+
+  function renderPagination() {
+    paginationContainer.innerHTML = '';
+
+    // Previous button
+    const prev = document.createElement("li");
+    prev.className = "page-item";
+    prev.innerHTML = `<a class="page-link" href="#">Previous</a>`;
+    prev.onclick = (e) => {
+      e.preventDefault();
+      currentPage = Math.max(1, currentPage - 1);
+      showPage(currentPage);
+    };
+    paginationContainer.appendChild(prev);
+
+    // Page numbers
+    for (let i = 1; i <= totalPages; i++) {
+      const li = document.createElement("li");
+      li.className = "page-item" + (i === 1 ? " active" : "");
+      li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+      li.onclick = (e) => {
+        e.preventDefault();
+        currentPage = i;
+        showPage(currentPage);
+      };
+      paginationContainer.appendChild(li);
+    }
+
+    // Next button
+    const next = document.createElement("li");
+    next.className = "page-item";
+    next.innerHTML = `<a class="page-link" href="#">Next</a>`;
+    next.onclick = (e) => {
+      e.preventDefault();
+      currentPage = Math.min(totalPages, currentPage + 1);
+      showPage(currentPage);
+    };
+    paginationContainer.appendChild(next);
+  }
+
+  let currentPage = 1;
+  renderPagination();
+  showPage(currentPage);
+});
+</script>
 
     <script src="scripts/bootstrap.bundle.min.js?ver=1.2.0"></script>
     <script src="scripts/aos.js?ver=1.2.0"></script>
