@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Academic Website</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Dr. Nguyen Luong Vuong</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="publication.html">Publication</a></li>
+        <li><a href="activities.html">Activities</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Home Page -->
+  <main id="home">
+    <section id="bio">
+      <h2>Bio</h2>
+      <p>I am a researcher and educator in Artificial Intelligence, focusing on machine learning, NLP, and AI education.</p>
+    </section>
+
+    <section id="cv">
+      <h2>Curriculum Vitae</h2>
+      <a href="cv.pdf" target="_blank">Download CV (PDF)</a>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <ul>
+        <li>Ph.D. in Computer Science - ABC University</li>
+        <li>M.Sc. in Information Systems - XYZ University</li>
+        <li>B.Sc. in Software Engineering - FPT University</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Publication Page -->
+  <main id="publication" >
+    <h2>Publications</h2>
+    <div class="filters">
+      <label for="type">Type:</label>
+      <select id="type" onchange="filterPublications()">
+        <option value="all">All</option>
+        <option value="journal">Journal</option>
+        <option value="conference">Conference</option>
+        <option value="book">Book</option>
+      </select>
+
+      <label for="status">Status:</label>
+      <select id="status" onchange="filterPublications()">
+        <option value="all">All</option>
+        <option value="published">Published</option>
+        <option value="accepted">Accepted</option>
+        <option value="review">In Review</option>
+      </select>
+    </div>
+
+    <ul id="publicationList">
+      <li data-type="journal" data-status="published">Journal A (Published)</li>
+      <li data-type="conference" data-status="accepted">Conference B (Accepted)</li>
+      <li data-type="book" data-status="review">Book Chapter C (In Review)</li>
+      <li data-type="journal" data-status="accepted">Journal D (Accepted)</li>
+    </ul>
+  </main>
+
+  <!-- Activities Page -->
+  <main id="activities" style="display:none">
+    <h2>Academic Activities</h2>
+    <ul>
+      <li>Reviewer for Journal of AI Research</li>
+      <li>Organizer of Vietnam AI Workshop 2024</li>
+      <li>Lecturer at FPT University</li>
+    </ul>
+  </main>
+
+  <!-- Blog Page -->
+  <main id="blog" style="display:none">
+    <h2>Blog</h2>
+    <article>
+      <h3>Recent Thoughts on AI Education</h3>
+      <p>AI education should focus on practical skills and real-world applications.</p>
+    </article>
+    <article>
+      <h3>Why Interpretability Matters</h3>
+      <p>Understanding AI decisions is critical for trust and accountability.</p>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Nguyen Luong Vuong</p>
+  </footer>
+</body>
+</html>
