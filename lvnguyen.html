@@ -3,99 +3,609 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Academic Website</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+  <title>Luong Vuong Nguyen, Ph.D. | Academic Personal Page</title>
+  <meta name="description" content="Academic personal page of Luong Vuong Nguyen, Ph.D. Lecturer, researcher, and AI scholar." />
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --surface: #ffffff;
+      --surface-2: #eef3f9;
+      --text: #1b2430;
+      --muted: #5b6878;
+      --primary: #163b65;
+      --primary-2: #2d6aa6;
+      --accent: #c78b2f;
+      --border: #d8e0ea;
+      --shadow: 0 12px 32px rgba(19, 36, 66, 0.08);
+      --radius: 20px;
+      --maxw: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, #f9fbfd 0%, #f3f6fb 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--primary-2);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(92%, var(--maxw));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(255,255,255,0.82);
+      border-bottom: 1px solid rgba(216,224,234,0.9);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 0.2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 56px 0 28px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 38px;
+      background:
+        radial-gradient(circle at top right, rgba(45,106,166,0.09), transparent 30%),
+        linear-gradient(135deg, #ffffff 0%, #f7fbff 100%);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #eaf2fb;
+      color: var(--primary);
+      font-size: 0.86rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.15;
+      color: var(--primary);
+    }
+
+    .subtitle {
+      font-size: 1.08rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .position-list {
+      display: grid;
+      gap: 10px;
+      margin: 20px 0 26px;
+    }
+
+    .position-item {
+      padding: 12px 14px;
+      background: var(--surface-2);
+      border-radius: 14px;
+      border: 1px solid #dde8f3;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #102d4c;
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--primary);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #f6f9fc;
+      text-decoration: none;
+    }
+
+    .profile-card {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .avatar {
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: white;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: inset 0 0 0 6px rgba(255,255,255,0.25);
+      margin-bottom: 4px;
+    }
+
+    .profile-meta h2 {
+      margin: 0 0 6px;
+      font-size: 1.35rem;
+      color: var(--primary);
+    }
+
+    .meta-line {
+      color: var(--muted);
+      font-size: 0.96rem;
+      margin: 5px 0;
+      word-break: break-word;
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-top: 8px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #f3f7fb;
+      border: 1px solid var(--border);
+      color: var(--primary);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    section {
+      padding: 22px 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 1.75rem;
+      color: var(--primary);
+    }
+
+    .section-title .line {
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, var(--border), transparent);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .content-card {
+      padding: 28px;
+    }
+
+    .lead {
+      margin: 0;
+      color: #304155;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+      margin-top: 6px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0 0 0 18px;
+      border-left: 2px solid #d7e3ef;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -7px;
+      top: 7px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .timeline-date {
+      font-weight: 700;
+      color: var(--primary-2);
+      font-size: 0.92rem;
+      margin-bottom: 2px;
+    }
+
+    .timeline-title {
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    ul.clean {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 14px;
+    }
+
+    ul.clean li {
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      background: #fbfdff;
+      border-radius: 16px;
+    }
+
+    .publication-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .publication-item {
+      padding: 20px 22px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+    }
+
+    .publication-item h3 {
+      margin: 0 0 6px;
+      font-size: 1.08rem;
+      color: var(--primary);
+    }
+
+    .publication-meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .interest-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .footer {
+      padding: 28px 0 48px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .note {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid, .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card, .profile-card, .content-card {
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .button-row, .socials {
+        gap: 8px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Dr. Nguyen Luong Vuong</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="publication.html">Publication</a></li>
-        <li><a href="activities.html">Activities</a></li>
-        <li><a href="blog.html">Blog</a></li>
-      </ul>
-    </nav>
+  <header class="topbar">
+    <div class="container nav">
+      <div class="brand">Luong Vuong Nguyen</div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#research">Research</a>
+        <a href="#activities">Activities</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- Home Page -->
-  <main id="home">
-    <section id="bio">
-      <h2>Bio</h2>
-      <p>I am a researcher and educator in Artificial Intelligence, focusing on machine learning, NLP, and AI education.</p>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="card hero-card">
+          <div class="eyebrow">Academic Personal Page</div>
+          <h1>Luong Vuong Nguyen, Ph.D.</h1>
+          <div class="subtitle">IEEE Member • DLI Ambassador Instructor (NVIDIA) • Lecturer & Researcher in Artificial Intelligence</div>
+
+          <div class="position-list">
+            <div class="position-item"><strong>Lecturer & Researcher</strong> — Department of Artificial Intelligence, FPT University, Da Nang, Vietnam</div>
+            <div class="position-item"><strong>Adjunct Professor</strong> — Department of Artificial Intelligence, The Catholic University of Korea, Bucheon, South Korea</div>
+          </div>
+
+          <div class="button-row">
+            <a class="btn btn-primary" href="#publications">View Publications</a>
+            <a class="btn btn-secondary" href="#contact">Get in Touch</a>
+          </div>
+        </div>
+
+        <aside class="card profile-card">
+          <div>
+            <div class="avatar">LVN</div>
+            <div class="profile-meta">
+              <h2>Profile</h2>
+              <div class="meta-line">Research areas: data mining, machine learning, deep learning, ambient intelligence, and logical reasoning.</div>
+              <div class="meta-line">Email: <a href="mailto:nguyenluongvuong@gmail.com">nguyenluongvuong@gmail.com</a></div>
+              <div class="meta-line">Email: <a href="mailto:vuongnl3@fe.edu.vn">vuongnl3@fe.edu.vn</a></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="socials">
+              <a class="tag" href="https://www.dropbox.com" target="_blank" rel="noopener">CV</a>
+              <a class="tag" href="https://scholar.google.com" target="_blank" rel="noopener">Google Scholar</a>
+              <a class="tag" href="https://orcid.org" target="_blank" rel="noopener">ORCID</a>
+              <a class="tag" href="https://dblp.uni-trier.de" target="_blank" rel="noopener">DBLP</a>
+              <a class="tag" href="https://www.scopus.com" target="_blank" rel="noopener">Scopus</a>
+            </div>
+            <p class="note">This template is designed to be easily customized with a real profile photo, exact external profile URLs, and additional sections such as projects, teaching, awards, or students.</p>
+          </div>
+        </aside>
+      </div>
     </section>
 
-    <section id="cv">
-      <h2>Curriculum Vitae</h2>
-      <a href="cv.pdf" target="_blank">Download CV (PDF)</a>
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>About</h2>
+          <div class="line"></div>
+        </div>
+        <div class="card content-card">
+          <p class="lead">
+            Luong Vuong Nguyen has been a Senior Lecturer and Researcher at the Faculty of Artificial Intelligence, FPT University, Da Nang, Vietnam, since October 2022. He has also served as an Adjunct Professor in the Department of Artificial Intelligence at The Catholic University of Korea since November 2022. He earned his Ph.D. in Computer Science and Engineering from Chung-Ang University, Seoul, South Korea, in 2022, and previously completed his M.S. in Computer Science at The University of Danang – University of Technology.
+          </p>
+          <div class="interest-wrap">
+            <span class="tag">Data Mining</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">Ambient Intelligence</span>
+            <span class="tag">Logical Reasoning</span>
+            <span class="tag">Knowledge Engineering</span>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="education">
-      <h2>Education</h2>
-      <ul>
-        <li>Ph.D. in Computer Science - ABC University</li>
-        <li>M.Sc. in Information Systems - XYZ University</li>
-        <li>B.Sc. in Software Engineering - FPT University</li>
-      </ul>
+      <div class="container">
+        <div class="section-title">
+          <h2>Education</h2>
+          <div class="line"></div>
+        </div>
+        <div class="card content-card">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">Sep 2018 – Aug 2022</div>
+              <div class="timeline-title">Chung-Ang University</div>
+              <div>Ph.D. in Computer Science and Engineering, Seoul, South Korea</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Aug 2011 – Aug 2013</div>
+              <div class="timeline-title">The University of Danang</div>
+              <div>M.S. in Computer Science, Da Nang University of Technology, Vietnam</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">Sep 2005 – Sep 2009</div>
+              <div class="timeline-title">The University of Danang</div>
+              <div>Bachelor of Mathematics – Informatics, University of Education, Vietnam</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="container grid-2">
+        <div>
+          <div class="section-title">
+            <h2>Research Interests</h2>
+            <div class="line"></div>
+          </div>
+          <div class="card content-card">
+            <ul class="clean">
+              <li><strong>Knowledge Engineering in Data Science</strong><br />Building intelligent systems grounded in structured knowledge and reasoning.</li>
+              <li><strong>Machine Learning & Deep Learning</strong><br />Developing predictive and representation learning methods for real-world problems.</li>
+              <li><strong>Ambient Intelligence</strong><br />Designing adaptive and context-aware systems for smart environments.</li>
+              <li><strong>Logical Reasoning</strong><br />Exploring explainability and decision support through rule-based and symbolic approaches.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">
+            <h2>Academic Service</h2>
+            <div class="line"></div>
+          </div>
+          <div class="card content-card">
+            <ul class="clean">
+              <li><strong>Guest Editor</strong><br />Computers, Materials & Continua (CMC)</li>
+              <li><strong>Conference Roles</strong><br />Special Session Chair, Track Chair, and Committee Member across ICIT, EIDT, IAAA, ICCE Asia, ICIIT, and related venues.</li>
+              <li><strong>Reviewer</strong><br />IEEE Access, PLOS One, Scientific Reports, International Journal of Human-Computer Interaction, Connection Science, and others.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="activities">
+      <div class="container">
+        <div class="section-title">
+          <h2>Selected Academic Activities</h2>
+          <div class="line"></div>
+        </div>
+        <div class="card content-card">
+          <ul class="clean">
+            <li><strong>Special Session Chair</strong> — The 4th International Conference on Intelligence of Things (ICIT 2025), Phuket, Thailand</li>
+            <li><strong>Track Chair</strong> — The International Conference on Explainable Intelligence in Digital Twins (EIDT 2025), Ho Chi Minh City, Vietnam</li>
+            <li><strong>Track Chair</strong> — The International Conference on Intelligent Aerial Access and Applications (IAAA 2025), Hanoi, Vietnam</li>
+            <li><strong>Special Session Chair</strong> — The 9th International Conference on Consumer Electronics (ICCE Asia 2024), Da Nang, Vietnam</li>
+            <li><strong>Technical Program Committee / Committee Member</strong> — ICIIT, ICIT, Computing4Human, ACVYS, WIMS, and related conferences</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="container">
+        <div class="section-title">
+          <h2>Selected Publications</h2>
+          <div class="line"></div>
+        </div>
+        <div class="publication-list">
+          <article class="card publication-item">
+            <h3>Explainable Book Recommendations via Graph Convolutional Networks</h3>
+            <div class="publication-meta">Luong Vuong Nguyen • The 3rd International Conference on Computer, Internet of Things and Smart City (CIoTSC 2025)</div>
+          </article>
+
+          <article class="card publication-item">
+            <h3>Temporal-Aware Dynamic Matrix Factorization with Contrastive Learning for Cold-Start User Adaptation</h3>
+            <div class="publication-meta">Luong Vuong Nguyen • CIoTSC 2025</div>
+          </article>
+
+          <article class="card publication-item">
+            <h3>User Satisfaction and Trust on Recommendation Systems with LLMs-Generated Explanations</h3>
+            <div class="publication-meta">Luong Vuong Nguyen • The 2nd International Conference on Networks, Communications and Intelligent Computing (NCIC)</div>
+          </article>
+
+          <article class="card publication-item">
+            <h3>Conditional Generative Adversarial Network-based Travel Route Recommendation</h3>
+            <div class="publication-meta">Sunbin Shin, Luong Vuong Nguyen, Grzegorz J. Nalepa, Paulo Novais, Xuan Hau Pham, and Jason J. Jung • Computers, Materials & Continua</div>
+          </article>
+
+          <article class="card publication-item">
+            <h3>Opinion Mining-Enhanced Collaborative Filtering for Book Recommendations</h3>
+            <div class="publication-meta">Luong Vuong Nguyen and Vy-Rin Nguyen • ECIS 2025</div>
+          </article>
+
+          <article class="card publication-item">
+            <h3>Continual Multimodal Contrastive Learning in Movie Recommendation Services</h3>
+            <div class="publication-meta">Luong Vuong Nguyen • ECIS 2025</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contact</h2>
+          <div class="line"></div>
+        </div>
+        <div class="card content-card">
+          <p class="lead"><strong>Luong Vuong Nguyen, Ph.D.</strong><br />Lecturer & Researcher, Department of Artificial Intelligence, FPT University<br />Adjunct Professor, Department of Artificial Intelligence, The Catholic University of Korea</p>
+          <p>
+            Email: <a href="mailto:nguyenluongvuong@gmail.com">nguyenluongvuong@gmail.com</a><br />
+            Email: <a href="mailto:vuongnl3@fe.edu.vn">vuongnl3@fe.edu.vn</a>
+          </p>
+          <p class="note">You can further extend this section with office address, lab information, social media, a contact form, map embed, or downloadable CV link.</p>
+        </div>
+      </div>
     </section>
   </main>
 
-  <!-- Publication Page -->
-  <main id="publication" >
-    <h2>Publications</h2>
-    <div class="filters">
-      <label for="type">Type:</label>
-      <select id="type" onchange="filterPublications()">
-        <option value="all">All</option>
-        <option value="journal">Journal</option>
-        <option value="conference">Conference</option>
-        <option value="book">Book</option>
-      </select>
-
-      <label for="status">Status:</label>
-      <select id="status" onchange="filterPublications()">
-        <option value="all">All</option>
-        <option value="published">Published</option>
-        <option value="accepted">Accepted</option>
-        <option value="review">In Review</option>
-      </select>
+  <footer class="footer">
+    <div class="container">
+      © 2026 Luong Vuong Nguyen. Designed as an academic personal page template in a clean, modern style.
     </div>
-
-    <ul id="publicationList">
-      <li data-type="journal" data-status="published">Journal A (Published)</li>
-      <li data-type="conference" data-status="accepted">Conference B (Accepted)</li>
-      <li data-type="book" data-status="review">Book Chapter C (In Review)</li>
-      <li data-type="journal" data-status="accepted">Journal D (Accepted)</li>
-    </ul>
-  </main>
-
-  <!-- Activities Page -->
-  <main id="activities" style="display:none">
-    <h2>Academic Activities</h2>
-    <ul>
-      <li>Reviewer for Journal of AI Research</li>
-      <li>Organizer of Vietnam AI Workshop 2024</li>
-      <li>Lecturer at FPT University</li>
-    </ul>
-  </main>
-
-  <!-- Blog Page -->
-  <main id="blog" style="display:none">
-    <h2>Blog</h2>
-    <article>
-      <h3>Recent Thoughts on AI Education</h3>
-      <p>AI education should focus on practical skills and real-world applications.</p>
-    </article>
-    <article>
-      <h3>Why Interpretability Matters</h3>
-      <p>Understanding AI decisions is critical for trust and accountability.</p>
-    </article>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Nguyen Luong Vuong</p>
   </footer>
 </body>
 </html>
