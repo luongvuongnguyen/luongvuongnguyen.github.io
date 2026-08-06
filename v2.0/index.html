@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Academic profile of Luong Vuong Nguyen, Ph.D. — AI researcher and lecturer.">
+  <title>Luong Vuong Nguyen, Ph.D. | Academic Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top">LVN<span>.</span></a>
+      <nav aria-label="Primary navigation">
+        <a href="#about">About</a><a href="#research">Research</a><a href="#publications">Publications</a><a href="#activities">Activities</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="portrait-wrap" aria-hidden="true">
+          <img src="images/vuongnl3.jpg" alt="Luong Vuong Nguyen" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+          <div class="portrait-fallback" hidden>LVN</div>
+        </div>
+        <div>
+          <p class="eyebrow">Artificial Intelligence · Recommender Systems · Knowledge Engineering</p>
+          <h1>Luong Vuong Nguyen, <em>Ph.D.</em></h1>
+          <p class="hero-role">Lecturer & Researcher, Department of Artificial Intelligence, FPT University<br>Adjunct Professor, The Catholic University of Korea</p>
+          <div class="link-row">
+            <a class="button primary" href="https://scholar.google.com/citations?user=RTE0uZ4AAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
+            <a class="button" href="https://orcid.org/0000-0002-4680-1984" target="_blank" rel="noreferrer">ORCID</a>
+            <a class="button" href="https://dblp.uni-trier.de/pid/279/5589.html" target="_blank" rel="noreferrer">DBLP</a>
+            <a class="button" href="mailto:vuongnl3@fe.edu.vn">Email</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container two-col">
+        <div><p class="section-label">Profile</p><h2>Academic biography</h2></div>
+        <div class="prose"><p>Luong Vuong Nguyen is a Senior Lecturer and Researcher at the Faculty of Artificial Intelligence, FPT University, Da Nang, Viet Nam, and an Adjunct Professor in the Department of Artificial Intelligence at The Catholic University of Korea. He received his Ph.D. in Computer Science and Engineering from Chung-Ang University in 2022.</p><p>His research interests include recommender systems, knowledge graphs, machine learning, deep learning, ambient intelligence, data mining, and logical reasoning.</p></div>
+      </div>
+    </section>
+
+    <section id="research" class="section soft-bg">
+      <div class="container">
+        <p class="section-label">Research</p><h2>Selected research directions</h2>
+        <div class="topic-grid">
+          <article><span>01</span><h3>Recommender Systems</h3><p>Personalization, cross-domain recommendation, graph learning, multimodal and explainable recommendation.</p></article>
+          <article><span>02</span><h3>Knowledge & Language</h3><p>Knowledge graphs, large language models, NLP, retrieval-augmented generation, and semantic reasoning.</p></article>
+          <article><span>03</span><h3>Applied AI</h3><p>Federated learning, cybersecurity, computer vision, speech processing, UAVs, and intelligent systems.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications" class="section">
+      <div class="container">
+        <div class="section-head"><div><p class="section-label">Scholarship</p><h2>Publications</h2></div><p id="resultCount" class="count"></p></div>
+        <div class="filters" aria-label="Publication filters">
+          <label class="search-box"><span>Search</span><input id="searchInput" type="search" placeholder="Title, author, venue, DOI…"></label>
+          <label><span>Status</span><select id="statusFilter"><option value="">All statuses</option></select></label>
+          <label><span>Year</span><select id="yearFilter"><option value="">All years</option></select></label>
+          <label><span>Type</span><select id="typeFilter"><option value="">All types</option></select></label>
+        </div>
+        <div id="publicationList" class="publication-list" aria-live="polite"><p class="loading">Loading publications…</p></div>
+      </div>
+    </section>
+
+    <section id="activities" class="section soft-bg">
+      <div class="container two-col">
+        <div><p class="section-label">Service</p><h2>Academic activities</h2></div>
+        <div class="activity-list">
+          <article><h3>Editorial service</h3><p>Editor and Guest Editor for international journal collections in artificial intelligence, visual intelligence, big data, and human-centric computing.</p></article>
+          <article><h3>Conference organization</h3><p>Track Chair, Special Session Chair, Technical Program Committee member, and organizing committee member for international AI and computing conferences.</p></article>
+          <article><h3>Peer review</h3><p>Reviewer for IEEE Access, PLOS ONE, Scientific Reports, International Journal of Human–Computer Interaction, Connection Science, and related journals.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container"><p>© <span id="currentYear"></span> Luong Vuong Nguyen. Academic profile.</p><a href="#top">Back to top ↑</a></div></footer>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
