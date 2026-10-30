@@ -1,4 +1,3 @@
-document.getElementById('year').textContent=new Date().getFullYear();
-const links=document.querySelectorAll('#menu .nav-link');
-links.forEach(link=>link.addEventListener('click',()=>{document.querySelectorAll('#menu .nav-link').forEach(a=>a.classList.remove('active'));link.classList.add('active');const nav=document.querySelector('#mainNav');if(nav.classList.contains('show'))bootstrap.Collapse.getOrCreateInstance(nav).hide();}));
-if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(link=>link.classList.toggle('active',link.getAttribute('href')==='#'+entry.target.id));}})},{rootMargin:'-25% 0px -65% 0px'});document.querySelectorAll('header[id],main section[id]').forEach(section=>observer.observe(section));}
+document.getElementById('year').textContent = new Date().getFullYear();
+document.querySelectorAll('#nav .nav-link').forEach(link=>link.addEventListener('click',()=>{const menu=document.getElementById('nav');if(menu.classList.contains('show'))bootstrap.Collapse.getOrCreateInstance(menu).hide();}));
+const sections=[...document.querySelectorAll('header[id],main section[id]')];const navLinks=[...document.querySelectorAll('#nav .nav-link')];const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+entry.target.id));}})},{rootMargin:'-20% 0px -65% 0px'});sections.forEach(section=>observer.observe(section));
